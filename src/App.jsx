@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/// App.js
+import React from "react";
+import Button from "./components/Button";
+import InputField from "./components/InputField";
+import Counter from "./components/Counter";
+import ToggleButton from "./components/ToggleButton";
+import ConditionalComponent from "./components/ConditionalComponent";
+import FormComponent from "./components/FormComponent";
+import withLogger from "./components/withLogger";
+import LifecycleComponent from "./components/LifecycleComponent";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const ButtonWithLogger = withLogger(Button);
+  const InputFieldWithLogger = withLogger(InputField);
+  const ConditionalComponentWithLogger = withLogger(ConditionalComponent);
+  const FormComponentWithLogger = withLogger(FormComponent);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1>React Components</h1>
+      <h2>Basic Component Creation</h2>
+      <ButtonWithLogger onClick={() => console.log("Button clicked")}>
+        Click me
+      </ButtonWithLogger>
+      <InputFieldWithLogger
+        value="Jana"
+        onChange={(e) => console.log(e.target.value)}
+      />
 
-export default App
+      <h2>State Management</h2>
+      <Counter />
+      <ToggleButton />
+
+      <h2>Conditional Rendering</h2>
+      <ConditionalComponentWithLogger />
+
+      <h2>Forms and Controlled Components</h2>
+      <FormComponentWithLogger />
+
+      <h2>Component Composition</h2>
+      <LifecycleComponent />
+    </div>
+  );
+};
+
+export default App;
