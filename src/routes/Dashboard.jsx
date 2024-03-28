@@ -19,6 +19,7 @@ const Dashboard = () => {
   return (
     <div>
       <h2>Dashboard</h2>
+      <p>Using Context api Auth Route is handled here!!</p>
       <Button onClick={goToHome}>Go to Home</Button>{" "}
       {/* Button to trigger navigation to home */}
       <Button onClick={handleLogout}>Logout</Button>{" "}
