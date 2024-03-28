@@ -1,21 +1,14 @@
-// ConditionalComponent.js
 import React, { useState } from "react";
 import Button from "./Button";
 
 const ConditionalComponent = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const toggleLogin = () => {
-    setIsLoggedIn(!isLoggedIn);
-  };
+  const [showMessage, setShowMessage] = useState(false);
 
   return (
     <div>
-      {isLoggedIn ? (
-        <p>Welcome, user!</p>
-      ) : (
-        <Button onClick={toggleLogin}>Login</Button>
-      )}
+      <h3>Conditional Rendering with toggle option!</h3>
+      {showMessage ? <p>Hello World!</p> : <p>Click for message</p>}
+      <Button onClick={() => setShowMessage(!showMessage)}>Show Message</Button>
     </div>
   );
 };
